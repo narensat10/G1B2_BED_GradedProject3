@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Ticket Tracker Application</title>
+
+<style>
+h3 {
+	color: white;
+	background-color: #335FFF;
+	text-align: center;
+}
+
+h2 {
+	color: blue;
+	text-align: left;
+	text-decoration-style: solid;
+}
+
+.button-container {
+	display: flex;
+	/* Optional: Adjust flex properties as needed */
+	gap: 10px; /* Adds space between buttons */
+}
+</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<br> <br>
+		<h3>Ticket Tracker Application</h3>
+		<br>
+
+		<h2>View Ticket</h2>
+		<hr>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr align="center">
+					<th>Ticket ID</th>
+					<th>Ticket Title</th>
+					<th>Ticket Short Description</th>
+					<th>Ticket Details</th>
+					<th>Ticket Created On</th>
+					<th>Ticket Edited On</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+
+					<td th:text="${ticket.id}" />
+					<td th:text="${ticket.title}" />
+					<td th:text="${ticket.description}" />
+					<td th:text="${ticket.content}" />
+					<td th:text="${ticket.created_date}" />
+					<td th:text="${ticket.edited_date}" />
+
+				</tr>
+			</tbody>
+			
+		</table>
+		<br>
+		<div class="button-container">
+			<!-- Add "Edit" button/link -->
+			<form action="#" th:action="@{/ticket/edit}" method="POST">
+
+				<input type="hidden" name="ticketId" th:value="${ticket.id}" />
+				<button type="submit" class="btn btn-info btn-sm ml-3 mr-1">Edit</button>
+
+			</form>
+			<!-- Add "delete" button/link -->
+			<form action="#" th:action="@{/ticket/delete}" method="POST">
+
+				<input type="hidden" name="ticketId" th:value="${ticket.id}" />
+				<button type="submit" class="btn btn-danger btn-sm"
+					onclick="if (!(confirm('Are you sure you want to delete this Ticket?'))) return false">
+					Delete</button>
+
+			</form>
+		</div>
+		<hr>
+		<a th:href="@{/ticket/list}">Back to Ticket List</a>
+	</div>
+</body>
+</html>
+
+
+

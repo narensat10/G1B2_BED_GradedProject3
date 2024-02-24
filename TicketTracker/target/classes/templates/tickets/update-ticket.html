@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Update Ticket</title>
+<style>
+h3 {
+	color: white;
+	background-color: #335FFF;
+	text-align: center;
+}
+
+h2 {
+	color: blue;
+	text-align: left;
+	text-decoration-style: solid;
+}
+</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<br> <br>
+		<h3>Ticket Tracker Application</h3>
+		<br>
+		<form action="#" th:action="@{/ticket/update}" th:object="${ticket}"
+			method="POST">
+
+
+			<p class="h4 mb-4">Edit Ticket</p>
+
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}" /> <input type="text"
+				th:field="*{title}" class="form-control mb-4 col-4"> <input
+				type="text" th:field="*{description}"
+				class="form-control mb-4 col-4">
+			<textarea th:field="*{content}" class="form-control mb-4 col-4"
+				rows="5" cols="50" placeholder="Enter Content"></textarea>
+			<input type="hidden" th:field="*{edited_date}" />
+			<button type="submit" class="btn btn-info col-2">Submit</button>
+		</form>
+
+		<hr>
+		<a th:href="@{/ticket/list}">Back to Ticket List</a>
+	</div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
